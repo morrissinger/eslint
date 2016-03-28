@@ -37,7 +37,7 @@ proxyquire = proxyquire.noCallThru().noPreserveCache();
  * fine for the purposes of testing because the tests are just relative to an
  * ancestor location.
  */
-var PROJECT_PATH = path.resolve(__dirname, "../../../../");
+var PROJECT_PATH = path.resolve(__dirname, "../../../../node_modules");
 
 /**
  * Helper function get easily get a path in the fixtures directory.
@@ -761,7 +761,7 @@ describe("ConfigFile", function() {
         });
 
         it("should return config file path when config file is in a descendant directory of the project path", function() {
-            var configFilePath = path.resolve(PROJECT_PATH, "./foo/bar/"),
+            var configFilePath = path.resolve(PROJECT_PATH, "./foo/bar/node_modules"),
                 result = ConfigFile.getLookupPath(path.resolve(PROJECT_PATH, "./foo/bar/"));
             assert.equal(result, configFilePath);
         });
